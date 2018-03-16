@@ -1,21 +1,31 @@
-# gshop
+READ.ME
 
-> A Vue.js project
+1.  Day 01
 
-## Build Setup
+  目标：
+    整体完成首页静态布局
+    vue脚手架搭建
+    基本组件抽取完毕 基本一级路由抽取完毕
 
-``` bash
-# install dependencies
-npm install
+  完成度：基本完成所有任务
 
-# serve with hot reload at localhost:8080
-npm run dev
+   问题：
+    考虑交互后首页头部布局问题
+      广告与头部同时固定定位，广告点击消失后内容和头部如何自动上移实现较完美效果
 
-# build for production with minification
-npm run build
+2.   Day 02
 
-# build for production and view the bundle analyzer report
-npm run build --report
-```
+    目标：
+      完成所有静态页面
+      完成所有页面基本交互 - 轮播图，点击消失切换效果，小狗眨眼睛效果
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+    完成度：基本完成所有任务
+
+    问题：
+      使用swiper后，原有的部分style样式消失，比如 下边框效果
+
+3.    Day 03
+
+    目标：
+        对前两天的效果进行优化，确保效果完美，样式存在
+        首页数据进行动态获取
