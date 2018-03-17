@@ -11,11 +11,17 @@ import Brand from '../pages/Classify/Brand/Brand'
 import NormalLogin from '../pages/MyEpet/NormalLogin/NormalLogin'
 import PhoneLogin from '../pages/MyEpet/PhoneLogin/PhoneLogin'
 
+import AllBrand from '../pages/AllBrand/AllBrand'
+
 Vue.use(VueRouter)
 
 export default new VueRouter({
 
   routes:[
+    {
+      path:'/allBrand',
+      component:AllBrand
+    },
     {
       path:'/classify',
       component:Classify,
@@ -32,7 +38,7 @@ export default new VueRouter({
           component:Brand,
           meta:{
             isShow:true
-          }
+          },
         },
         {
           path:'',

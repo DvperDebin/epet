@@ -8,9 +8,10 @@
 <script>
 
 import Footer from './components/Footer/footer'
+
 export default {
   components: {
-    Footer
+    Footer,
   }
 }
 </script>

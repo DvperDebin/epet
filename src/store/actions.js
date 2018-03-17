@@ -22,11 +22,12 @@ export default {
   },
 
   // 异步发送请求得到首页数据
-  async getHomeData({commit}){
+  async getHomeData({commit},callBack){
     const result = await reqHomeData()
     if(result.code === 0){
       commit(GET_HOMEDATA,{homeData:result.data})
     }
+    callBack && callBack()
   }
 
 }

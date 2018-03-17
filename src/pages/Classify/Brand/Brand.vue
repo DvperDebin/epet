@@ -27,10 +27,9 @@
       </div>
     </div>
 
-
-    <div class="all">
+    <router-link to="/allBrand" class="all" tag="div">
       全部
-    </div>
+    </router-link>
   </div>
 </template>
 

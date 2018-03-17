@@ -326,16 +326,15 @@
     },
     mounted (){
       // 发送ajax请求获取数据
-      this.$store.dispatch('getHomeData')
-    },
-    watch:{
-      homeData(){
+      this.$store.dispatch('getHomeData', () => {
         this.$nextTick( () => {
           //swiper
           let swiper = new Swiper('.home_nav >.swiper-container', {
             loop: true,
-            autoplay:true,
-            delay:3000,
+            autoplay:{
+              delay:3000,
+              disableOnInteraction: false,
+            },
             pagination: {
               el: '.swiper-pagination'
             }
@@ -348,8 +347,10 @@
 
           let advSwiper = new Swiper('.home_adv_slider>#advSlider', {
             loop: true,
-            autoplay:true,
-            delay:1000,
+            autoplay:{
+              delay:1000,
+              disableOnInteraction: false,
+            },
             pagination: {
               el: '.swiper-pagination'
             }
@@ -360,8 +361,9 @@
             spaceBetween: 20,
           });
         })
-      }
+      })
     },
+
     methods:{
       switchBorder(index){
         this.currentIndex = index

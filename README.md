@@ -24,6 +24,7 @@ READ.ME
     问题：
       使用swiper后，原有的部分style样式消失，比如 下边框效果
 
+
 3.    Day 03
 
     目标：
@@ -47,9 +48,16 @@ READ.ME
             遍历时xxx[i].index = i 注意！
             注意 new swiper对象 和 new BScroll对象要在 this.nextTick( () => {})中，使用点击事件回调或者watch监视
 
+3.5 ###
+    day04 little update  解决一些小Bug 遗留问题
+
 4.    Day 04
 
     目标：  分类，品牌页数据进行动态获取。
             整体布局优化，减少flex布局使用，
             新增品牌下全部界面
+
+    发现bug
+      swiper 轮播图 拖拽后 自动轮播失效  --- 解决， 配置autoplay --- disableOnInteraction: false,
+
 
