@@ -1,13 +1,5 @@
 <template>
   <div>
-    <div class="login_forget">
-      <a href="###">忘记密码？</a>
-    </div>
-    <div class="login_login">
-      <a href="###">
-        登录
-      </a>
-    </div>
     <div class="login_empty">
 
     </div>
@@ -35,29 +27,6 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-  .login_forget
-    width 100%
-    overflow hidden
-    >a
-      diplay block
-      float right
-      color #898989
-      font-size 14px
-  .login_login
-    width 100%
-    margin-top 6px
-    >a
-      display: block;
-      width 100%
-      height 38px
-      line-height 38px
-      letter-spacing: 5px;
-      border-radius: 5px;
-      background: #2ec975;
-      font-size: 15px;
-      color #fff
-      text-align: center;
-
   .login_empty
     width 100%
     height 120px

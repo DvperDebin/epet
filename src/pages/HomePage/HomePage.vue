@@ -28,60 +28,26 @@
         </div>
         <!-- 头部导航 -->
         <div class="header_nav">
-          <div class="header_nav_item">
-            <span class="header_nav_text on">首页</span>
-          </div>
-          <div class="header_nav_item">
-            <span class="header_nav_text ">狗狗主粮</span>
-          </div>
-          <div class="header_nav_item">
-            <span class="header_nav_text">服饰城</span>
-          </div>
-          <div class="header_nav_item">
-            <span class="header_nav_text">医疗保健</span>
-          </div>
-          <div class="header_nav_item">
-            <span class="header_nav_text">零食玩具</span>
+          <div class="swiper-container swiper-container-horizontal">
+            <div class="swiper-wrapper" v-if="homeData[0]">
+              <div class="swiper-slide swiper-slide-active" v-for="(item,index) in homeData[0].menus" :key="index">
+                <span class="header_nav_text" :class="{on:index === currentIndex}" @click="switchBorder(index)">{{item.menu_name}}</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </header>
     <!-- 首页内容区 -->
-    <div class="home_content">
+    <div class="home_content" v-if="homeData[0]">
       <!-- 轮播图区域 -->
       <nav class="home_nav">
         <div class="swiper-container">
-          <div class="swiper-wrapper">
+          <div class="swiper-wrapper" v-if="homeData[0]">
             <!-- 第一页 -->
-            <div class="swiper-slide">
+            <div class="swiper-slide" v-for="(value,index) in homeData[0].dog_banner" :key="index">
               <a href="###">
-                <img src="./slider1.jpg">
-              </a>
-            </div>
-            <!-- 第二页 -->
-            <div class="swiper-slide">
-              <a href="###">
-                <img src="./slider2.jpg">
-              </a>
-            </div>
-            <div class="swiper-slide">
-              <a href="###">
-                <img src="./slider3.jpg">
-              </a>
-            </div>
-            <div class="swiper-slide">
-              <a href="###">
-                <img src="./slider4.jpg">
-              </a>
-            </div>
-            <div class="swiper-slide">
-              <a href="###">
-                <img src="./slider5.jpg">
-              </a>
-            </div>
-            <div class="swiper-slide">
-              <a href="###">
-                <img src="./slider-7.jpg">
+                <img :src="value">
               </a>
             </div>
           </div>
@@ -91,67 +57,22 @@
       </nav>
       <!-- 大banner区域 -->
       <div class="home_banner">
-        <a href="###">
-          <img src="./banner.jpg">
+        <a href="###" v-if="homeData[0]">
+          <img :src="homeData[0].dog_img">
         </a>
       </div>
       <!-- 选项区域 -->
-      <div class="home_selection">
-        <div class="home_selection_item">
+      <div class="home_selection" v-if="homeData[0]">
+        <div class="home_selection_item" v-for="(value,index) in homeData[0].menu_list" :key="index">
           <a href="###">
-            <img src="./nav1.jpg">
-          </a>
-        </div>
-        <div class="home_selection_item">
-          <a href="###">
-            <img src="./nav2.jpg">
-          </a>
-        </div>
-        <div class="home_selection_item">
-          <a href="###">
-            <img src="./nav3.jpg">
-          </a>
-        </div>
-        <div class="home_selection_item">
-          <a href="###">
-            <img src="./nav4.jpg">
-          </a>
-        </div>
-        <div class="home_selection_item">
-          <a href="###">
-            <img src="./nav5.jpg">
-          </a>
-        </div>
-        <div class="home_selection_item">
-          <a href="###">
-            <img src="./nav6.jpg">
-          </a>
-        </div>
-        <div class="home_selection_item">
-          <a href="###">
-            <img src="./nav7.jpg">
-          </a>
-        </div>
-        <div class="home_selection_item">
-          <a href="###">
-            <img src="./nav8.jpg">
-          </a>
-        </div>
-        <div class="home_selection_item">
-          <a href="###">
-            <img src="./nav9.jpg">
-          </a>
-        </div>
-        <div class="home_selection_item">
-          <a href="###">
-            <img src="./nav10.jpg">
+            <img :src="value">
           </a>
         </div>
       </div>
       <!-- 今日秒杀 -->
       <div class="home_adv">
-        <a href="###">
-          <img src="./adv-1.jpg">
+        <a href="###" v-if="homeData[0]">
+          <img :src="homeData[0].miaosha">
         </a>
       </div>
       <!-- 每日疯抢 -->
@@ -253,46 +174,31 @@
       <!-- 品牌力量 -->
       <div class="home_brand_power">
         <a href="###">
-          <img src="./brandpower.jpg">
+          <img :src="homeData[0].brand_power">
         </a>
       </div>
       <!-- GIF -->
       <div class="home_gif">
-        <img src="./ani.gif">
+        <img :src="homeData[0].gif">
       </div>
       <!-- VIP -->
       <div class="home_VIP">
         <a href="###">
-          <img src="./vip.jpg">
+          <img :src="homeData[0].vip">
         </a>
       </div>
       <!-- 活动 -->
       <div class="home_support">
-        <div class="home_support_item">
+        <div class="home_support_item" v-for="(value,index) in homeData[0].vip_services" :key="index">
           <a href="###">
-            <img src="./support1.jpg">
-          </a>
-        </div>
-        <div class="home_support_item">
-          <a href="###">
-            <img src="./suppport2.jpg">
-          </a>
-        </div>
-        <div class="home_support_item">
-          <a href="###">
-            <img src="./support3.jpg">
-          </a>
-        </div>
-        <div class="home_support_item">
-          <a href="###">
-            <img src="./support4.jpg">
+            <img :src="value">
           </a>
         </div>
       </div>
       <!--一折 -->
       <div class="home_discount">
         <a href="###">
-          <img src="./90off.jpg">
+          <img :src="homeData[0].dapaituan">
         </a>
       </div>
       <!-- 广告轮播图 -->
@@ -300,35 +206,9 @@
         <div class="swiper-container" id="advSlider">
           <div class="swiper-wrapper">
             <!-- 第一页 -->
-            <div class="swiper-slide">
+            <div class="swiper-slide" v-for="(value,index) in homeData[0].dapaituan_list" :key="index">
               <a href="###">
-                <img src="./navslider1.jpg">
-              </a>
-            </div>
-            <!-- 第二页 -->
-            <div class="swiper-slide">
-              <a href="###">
-                <img src="./navslider2.jpg">
-              </a>
-            </div>
-            <div class="swiper-slide">
-              <a href="###">
-                <img src="./navslider3.jpg">
-              </a>
-            </div>
-            <div class="swiper-slide">
-              <a href="###">
-                <img src="./navslider4.jpg">
-              </a>
-            </div>
-            <div class="swiper-slide">
-              <a href="###">
-                <img src="./navslider5.jpg">
-              </a>
-            </div>
-            <div class="swiper-slide">
-              <a href="###">
-                <img src="./navslider6.jpg">
+                <img :src="value">
               </a>
             </div>
           </div>
@@ -340,38 +220,13 @@
       <div class="home_big_goods">
         <div class="home_bigGoods_banner">
           <a href="###">
-            <img src="./biggoods.jpg">
+            <img :src="homeData[0].haohuo">
           </a>
         </div>
         <div class="home_bigGoods_goods">
-          <div class="home_bigGoods_item">
+          <div class="home_bigGoods_item" v-for="(value,index) in homeData[0].haohuo_list" :key="index">
             <a href="###">
-              <img src="./biggoods1.jpg">
-            </a>
-          </div>
-          <div class="home_bigGoods_item">
-            <a href="###">
-              <img src="./biggoods2.jpg">
-            </a>
-          </div>
-          <div class="home_bigGoods_item">
-            <a href="###">
-              <img src="./biggoods3.jpg">
-            </a>
-          </div>
-          <div class="home_bigGoods_item">
-            <a href="###">
-              <img src="./biggoods4.jpg">
-            </a>
-          </div>
-          <div class="home_bigGoods_item">
-            <a href="###">
-              <img src="./biggoods5.jpg">
-            </a>
-          </div>
-          <div class="home_bigGoods_item">
-            <a href="###">
-              <img src="./biggoods6.jpg">
+              <img :src="value">
             </a>
           </div>
         </div>
@@ -462,40 +317,68 @@
       </div>
     </div>
 
+    <!-- 眨眼小狗 -->
+    <div class="home_dog_img">
+
+    </div>
   </div>
 </template>
 
 <script>
   import Swiper from 'swiper'
   import 'swiper/dist/css/swiper.min.css'
+  import {mapState} from 'vuex'
   export default {
-
+    data(){
+      return {
+        currentIndex:0
+      }
+    },
+    computed:{
+      ...mapState(['homeData'])
+    },
     mounted (){
-      this.$nextTick( () => {
-        //swiper
-        let swiper = new Swiper('.home_nav >.swiper-container', {
-          loop: true,
-          autoplay:true,
-          delay:3000,
-          pagination: {
-            el: '.swiper-pagination'
-          }
+      // 发送ajax请求获取数据
+      this.$store.dispatch('getHomeData')
+    },
+    watch:{
+      homeData(){
+        this.$nextTick( () => {
+          //swiper
+          let swiper = new Swiper('.home_nav >.swiper-container', {
+            loop: true,
+            autoplay:true,
+            delay:3000,
+            pagination: {
+              el: '.swiper-pagination'
+            }
+          })
+
+          let newSwiper = new Swiper('#suprise_image', {
+            slidesPerView: 3,
+            spaceBetween: 30,
+          });
+
+          let advSwiper = new Swiper('.home_adv_slider>#advSlider', {
+            loop: true,
+            autoplay:true,
+            delay:1000,
+            pagination: {
+              el: '.swiper-pagination'
+            }
+          });
+
+          let headerSwiper = new Swiper('.header_nav>.swiper-container', {
+            slidesPerView: 5,
+            spaceBetween: 20,
+          });
         })
-
-        let newSwiper = new Swiper('#suprise_image', {
-          slidesPerView: 3,
-          spaceBetween: 30,
-        });
-
-        let advSwiper = new Swiper('.home_adv_slider>#advSlider', {
-          loop: true,
-          autoplay:true,
-          delay:1000,
-          pagination: {
-            el: '.swiper-pagination'
-          }
-        });
-      })
+      }
+    },
+    methods:{
+      switchBorder(index){
+        this.currentIndex = index
+      }
     }
   }
 
@@ -568,18 +451,20 @@
         .header_nav
           display flex
           width 100%
-          height 36px
-          .header_nav_item
-            flex 1
-            display flex
-            justify-content center
-            .header_nav_text
-              display block
-              font-size 14px
-              color #666
-              line-height 36px
-              &.on
-                border-bottom 2px solid #459d36
+          .swiper-container
+            width 100%
+            height 100%
+            .swiper-wrapper
+              .swiper-slide
+                text-align center
+                .header_nav_text
+                  font-size 14px
+                  color #666
+                  line-height 36px
+                  display inline-block
+                  &.on
+                    border-bottom 2px solid #459d36
+                    box-sizing border-box
 
 
     .home_content
@@ -898,4 +783,20 @@
       .emptydiv
         height 46px
         width 100%
+    .home_dog_img
+      width 41px
+      height 46px
+      position fixed
+      right 0
+      bottom 100px
+      background-image url("./godog.png")
+      background-repeat no-repeat
+      background-size 80px auto
+      background-position 0 0
+      animation dog 1s steps(1) infinite
+      z-index 10
+      @keyframes dog
+        50%
+          background-position -41px 0
+
 </style>

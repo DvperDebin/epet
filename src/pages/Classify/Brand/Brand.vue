@@ -1,172 +1,25 @@
 <template>
   <div class="brand">
     <div class="brand_inner">
-      <div class="brand_types">
+      <div class="brand_types" v-for="(item,index) in brand" :key="index">
         <!-- 标题 -->
         <div class="brand_title">
-          <span>—— 推荐品牌 ——</span>
+          <span>—— {{item.title}} ——</span>
         </div>
         <!-- 图片内容 -->
         <div class="brand_list">
           <ul>
-            <li>
+            <li v-for="(list,index) in item.list" :key="index">
               <a href="###">
                 <div class="list_img">
-                  <img src="./rl1.jpg">
+                  <img :src="list.logo">
                 </div>
-                <div>
-                </div>
-                <p class="p_1">冠能</p>
-                <p>美国</p>
-              </a>
-            </li>
-            <li>
-              <a href="###">
-                <div class="list_img">
-                  <img src="./rl2.jpg">
-                </div>
-                <div class="rec">
+                <div class="rec" v-if="list.recommend">
                   <img src="./reced.png">
                 </div>
-                <span class="walfare"></span>
-                <p class="p_1">ZIWI Peak</p>
-                <p>新西兰</p>
-              </a>
-            </li>
-            <li>
-              <a href="###">
-                <div class="list_img">
-                  <img src="./rl3.jpg">
-                </div>
-                <div class="rec">
-                </div>
-                <span class="walfare"></span>
-                <p class="p_1">原始猎食渴望</p>
-                <p>加拿大</p>
-              </a>
-            </li>
-            <li>
-              <a href="###">
-                <div class="list_img">
-                  <img src="./rl4.jpg">
-                </div>
-                <div class="rec">
-                </div>
-                <span class="walfare"></span>
-                <p class="p_1">麦高臣Microcyn...</p>
-                <p>美国</p>
-              </a>
-            </li>
-            <li>
-              <a href="###">
-                <div class="list_img">
-                  <img src="./rl5.jpg">
-                </div>
-                <div class="rec">
-                </div>
-                <span class="walfare">TA公益</span>
-                <p class="p_1">谷登GOLDEN</p>
-                <p>中国</p>
-              </a>
-            </li>
-            <li>
-              <a href="###">
-                <div class="list_img">
-                  <img src="./rl6.jpg">
-                </div>
-                <div class="rec">
-                </div>
-                <span class="walfare"></span>
-                <p class="p_1">爱喜雅</p>
-                <p>日本</p>
-              </a>
-            </li>
-            <li>
-              <a href="###">
-                <div class="list_img">
-                  <img src="./rl7.jpg">
-                </div>
-                <div class="rec">
-                </div>
-                <span class="walfare"></span>
-                <p class="p_1">MAG</p>
-                <p>英国</p>
-              </a>
-            </li>
-            <li>
-              <a href="###">
-                <div class="list_img">
-                  <img src="./rl8.jpg">
-                </div>
-                <div class="rec">
-                </div>
-                <span class="walfare"></span>
-                <p class="p_1">卡比CANIDAE</p>
-                <p>美国</p>
-              </a>
-            </li>
-            <li>
-              <a href="###">
-                <div class="list_img">
-                  <img src="./rl9.jpg">
-                </div>
-                <div class="rec">
-                </div>
-                <span class="walfare"></span>
-                <p class="p_1">拉夫威尔</p>
-                <p>美国</p>
-              </a>
-            </li>
-            <li>
-              <a href="###">
-                <div class="list_img">
-                  <img src="./rl10.jpg">
-                </div>
-                <div class="rec">
-                  <img src="./reced.png">
-                </div>
-                <span class="walfare"></span>
-                <p class="p_1">爱肯拿Acana</p>
-                <p>加拿大</p>
-              </a>
-            </li>
-            <li>
-              <a href="###">
-                <div class="list_img">
-                  <img src="./rl11.jpg">
-                </div>
-                <div class="rec">
-
-                </div>
-                <span class="walfare"></span>
-                <p class="p_1">皇室Sea Kingdom</p>
-                <p>泰国</p>
-              </a>
-            </li>
-            <li>
-              <a href="###">
-                <div class="list_img">
-                  <img src="./rl12.jpg">
-                </div>
-                <div class="rec">
-
-                </div>
-                <span class="walfare">TA公益</span>
-                <p class="p_1">蓝氏LegendSandy</p>
-                <p>中国</p>
-              </a>
-            </li>
-            <li>
-              <a href="###">
-                <div class="list_img">
-                  <img src="./rl13.jpg">
-                </div>
-                <div class="rec">
-
-                </div>
-                <span class="walfare">TA公益</span>
-                <p class="p_1">顽皮</p>
-                <p>中国</p>
+                <span class="walfare" v-if="list.tagongyi">TA公益</span>
+                <p class="p_1">{{list.name}}</p>
+                <p>{{list.address}}</p>
               </a>
             </li>
           </ul>
@@ -177,7 +30,19 @@
 </template>
 
 <script>
-  export default {}
+  import {mapState} from 'vuex'
+  export default {
+
+
+    mounted (){
+      this.$store.dispatch('getBrand')
+    },
+
+    computed:{
+      ...mapState(['brand'])
+    }
+
+  }
 
 </script>
 
@@ -192,7 +57,8 @@
       background-color #fff
       .brand_types
         width 100%
-        height 100%
+        margin-bottom 30px
+        border-bottom 15px solid #f3f4f5
         .brand_title
           width 100%
           padding-top 20px
@@ -206,6 +72,7 @@
           box-sizing border-box
           >ul
             width 100%
+            overflow hidden
             >li
               margin-top: 20px;
               width: 33.33%;
@@ -237,10 +104,12 @@
                   left 0
                   width 13px
                   height 13px
+                  display block
                   >img
                     display block
                     width 100%
                     height 100%
+
                 .walfare
                   font-size 8px
                   position absolute

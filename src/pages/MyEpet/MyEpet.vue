@@ -12,16 +12,16 @@
       </div>
       <div class="header_bot">
         <div class="header_bot_userLogin">
-          <router-link to="/myepet/normalLogin" class="loginbtn" @click.native="switchTri(true)" replace>
+          <router-link to="/myepet/normalLogin" class="loginbtn" replace>
             普通登录
           </router-link>
-          <i class="iconfont icon-triangle-top" v-show="isShowTri"></i>
+          <i class="iconfont icon-triangle-top" v-show="$route.path === '/myepet/normalLogin'"></i>
         </div>
         <div class="header_bot_phoneLogin">
-          <router-link to="/myepet/phoneLogin" class="loginbtn" @click.native="switchTri(false)" replace>
+          <router-link to="/myepet/phoneLogin" class="loginbtn" replace>
             手机动态密码登录
           </router-link>
-          <i class="iconfont icon-triangle-top" v-show="!isShowTri"></i>
+          <i class="iconfont icon-triangle-top" v-show="$route.path === '/myepet/phoneLogin' "></i>
         </div>
       </div>
     </div>
@@ -38,9 +38,6 @@
       }
     },
     methods:{
-      switchTri(type){
-        this.isShowTri = type
-      },
       goback(){
         this.$router.back()
       }

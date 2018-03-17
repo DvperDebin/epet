@@ -11,33 +11,35 @@
       </span>
     </div>
     <!-- 分类 -->
-    <div class="shopCart_selection" v-show="isShowSelection">
-      <a href="###">
+    <transition name="move">
+      <div class="shopCart_selection" v-show="isShowSelection">
+        <a href="###">
         <span>
           <i class="iconfont icon-shouyedianpujishishangcheng"></i>
         </span>
-        <p>首页</p>
-      </a>
-      <a href="###">
+          <p>首页</p>
+        </a>
+        <a href="###">
         <span>
           <i class="iconfont icon-fenlei"></i>
         </span>
-        <p>商品分类</p>
-      </a>
-      <a href="###" class="cart_count">
+          <p>商品分类</p>
+        </a>
+        <a href="###" class="cart_count">
         <span>
           <i class="iconfont icon-gouwuche"></i>
         </span>
-        <div>0</div>
-        <p>购物车</p>
-      </a>
-      <a href="###">
+          <div>0</div>
+          <p>购物车</p>
+        </a>
+        <a href="###">
         <span>
           <i class="iconfont icon-chongwu"></i>
         </span>
-        <p>我的E宠</p>
-      </a>
-    </div>
+          <p>我的E宠</p>
+        </a>
+      </div>
+    </transition>
     <!-- 购物车 -->
     <div class="shopCart_container">
       <div class="shopCart_img">
@@ -65,7 +67,6 @@
     },
     methods:{
       goback(){
-        console.log(1);
         this.$router.back()
       },
       switchOff(){
@@ -124,8 +125,12 @@
       height 75px
       padding 0 12px
       box-sizing border-box
-      border-bottom 1px solid #eee
       display flex
+      &.move-enter-active, &.move-leave-active
+        transition all 0.3s
+      &.move-enter, &.move-leave-to
+        height 0
+        opacity 0
       >a
         display flex
         flex-direction column
@@ -157,6 +162,7 @@
           color #666
     .shopCart_container
       width 100%
+      border-top 1px solid #eee
       .shopCart_img
         width 100%
         height 170px

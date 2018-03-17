@@ -4,127 +4,75 @@
     <!-- 主题内容分类 -->
     <div class="classify_main_types">
       <ul>
-        <li class="on">
+        <li :class="{on:index === currentIndex}" v-for="(type,index) in category" :key="index"
+        @click="showImg(index)">
           <a href="###">
-            为您推荐
-          </a>
-        </li>
-        <li>
-          <a href="###">
-            狗狗主粮
-          </a>
-        </li>
-        <li>
-          <a href="###">
-            狗狗零食
-          </a>
-        </li>
-        <li>
-          <a href="###">
-            狗狗服饰
-          </a>
-        </li>
-        <li>
-          <a href="###">
-            狗狗窝垫
-          </a>
-        </li>
-        <li>
-          <a href="###">
-            狗狗生活
-          </a>
-        </li>
-        <li>
-          <a href="###">
-            狗狗玩具
-          </a>
-        </li>
-        <li>
-          <a href="###">
-            狗狗保健
-          </a>
-        </li>
-        <li>
-          <a href="###">
-            狗狗医疗
-          </a>
-        </li>
-        <li>
-          <a href="###">
-            狗狗牵引
-          </a>
-        </li>
-        <li>
-          <a href="###">
-            狗狗美容
-          </a>
-        </li>
-        <li>
-          <a href="###">
-            狗狗周边
-          </a>
-        </li>
-        <li>
-          <a href="###">
-            狗狗清洁
+            {{type.name}}
           </a>
         </li>
       </ul>
     </div>
-
     <!-- 主体内容展现 -->
-    <div class="classify_main_content">
-      <!-- 分类文字 -->
+    <div class="classify_main_content" v-for="(type,index) in category" :key="index" v-show="index === currentIndex">
+       <!-- 上方图片 -->
       <div class="classify_main_content_type1">
         <div class="classify_main_typeText">
-          <span>热门分类</span>
+          <span>{{type.cate_list[0].title}}</span>
         </div>
         <!-- 图片 -->
-        <div class="classify_main_img">
-          <div>
+        <div class="classify_main_img" >
+          <div v-for="(info,index) in type.cate_list[0].list" :key="index">
             <a href="###">
-              <img src="./rec1.jpg">
+              <img :src="info.photo ||info.logo">
             </a>
-            <span>国产狗粮</span>
+            <span>{{info.name}}</span>
           </div>
-          <div>
+        </div>
+      </div>
+      <!-- 下方图片 -->
+      <div class="classify_main_content_type2" v-if="category[currentIndex].cate_list[1]">
+        <div class="classify_main_typeText">
+          <span>热门品牌</span>
+          <span>
+            <img src="./allgoods.png" >
+          </span>
+        </div>
+        <!-- 图片 -->
+        <div class="classify_main_img" >
+          <div v-for="(info,index) in category[currentIndex].cate_list[1].list" :key="index" >
             <a href="###">
-              <img src="./rec2.jpg">
+              <img :src="info.photo ||info.logo">
             </a>
-            <span>磨牙洁齿</span>
-          </div>
-          <div>
-            <a href="###">
-              <img src="./rec3.jpg">
-            </a>
-            <span>体内驱虫</span>
-          </div>
-          <div>
-            <a href="###">
-              <img src="./rec4.jpg">
-            </a>
-            <span>强化免疫</span>
-          </div>
-          <div>
-            <a href="###">
-              <img src="./rec5.jpg">
-            </a>
-            <span>肠胃调理</span>
-          </div>
-          <div>
-            <a href="###">
-              <img src="./rec6.jpg">
-            </a>
-            <span>进口狗粮</span>
+            <span>{{info.name}}</span>
           </div>
         </div>
       </div>
     </div>
+
   </div>
 </template>
 
 <script>
-  export default {}
+  import {mapState} from 'vuex'
+  export default {
+    data(){
+      return {
+        currentIndex:0
+      }
+    },
+    mounted(){
+      // 发送ajax请求
+      this.$store.dispatch('getCategorys')
+    },
+    computed:{
+      ...mapState(['category']),
+    },
+    methods:{
+      showImg(index){
+        this.currentIndex = index
+      },
+    }
+  }
 
 </script>
 
@@ -175,6 +123,16 @@
             padding-left 5px
             box-sizing border-box
             margin-top 10px
+          >span:nth-child(2)
+            display inline-block
+            width 45px
+            height 10px
+            float right
+            >img
+              display inline-block
+              height 100%
+              width 100%
+              vertical-align top
         .classify_main_img
           display flex
           width 100%
@@ -187,7 +145,8 @@
             height 116px
             >a
               display block
-              width 100%
+              width 86px
+              height 86px
               >img
                 display block
                 width 100%
@@ -195,6 +154,60 @@
             >span
               display block
               font-size 13px
+              text-align center
+              padding-top 10px
+              box-sizing border-box
+      .classify_main_content_type2
+        width 100%
+        padding 5px 5px 20px 5px
+        box-sizing border-box
+        border-top 1px solid #f3f4f5
+        .classify_main_typeText
+          width 100%
+          height 30px
+          >span:nth-child(1)
+            display block
+            font-size 12px
+            color #999
+            padding-left 5px
+            box-sizing border-box
+            margin-top 10px
+          >span:nth-child(2)
+            display inline-block
+            width 45px
+            height 10px
+            float right
+            >img
+              display inline-block
+              height 100%
+              width 100%
+              vertical-align top
+        .classify_main_img
+          display flex
+          width 100%
+          flex-wrap wrap
+          padding-top 5px
+          box-sizing border-box
+          justify-content center
+          >div
+            width 40%
+            height 80px
+            margin-right 10px
+            margin-bottom 10px
+            >a
+              display block
+              width 100%
+              height 55px
+              padding 4px 22px
+              box-sizing border-box
+              border 1px solid #f3f4f5
+              >img
+                display block
+                width 100%
+                height 100%
+            >span
+              display block
+              font-size 12px
               text-align center
               padding-top 10px
               box-sizing border-box
