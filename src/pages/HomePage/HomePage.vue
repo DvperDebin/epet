@@ -3,11 +3,11 @@
     <!-- 首页头部 -->
     <header class="header">
       <!-- 头部广告 -->
-      <div class="header_nav_wrapper">
+      <div class="header_nav_wrapper" v-show="isShowAdv">
         <a href="###" class="header_adv">
           <img src="./headerAdv.jpg">
         </a>
-        <img src="./closebtn.png">
+        <img src="./closebtn.png" @click="closeAdv">
       </div>
       <!-- 广告下方导航 -->
       <div class="header_main">
@@ -39,7 +39,7 @@
       </div>
     </header>
     <!-- 首页内容区 -->
-    <div class="home_content" v-if="homeData[0]">
+    <div class="home_content" v-if="homeData[0]" ref="paddingSet">
       <!-- 轮播图区域 -->
       <nav class="home_nav">
         <div class="swiper-container">
@@ -223,10 +223,15 @@
             <img :src="homeData[0].haohuo">
           </a>
         </div>
-        <div class="home_bigGoods_goods">
-          <div class="home_bigGoods_item" v-for="(value,index) in homeData[0].haohuo_list" :key="index">
-            <a href="###">
-              <img :src="value">
+        <div class="home_bigGoods_goods" v-for="(lists,index) in homeData[0].haohuo_list" :key="index">
+          <div class="home_bigGoods_left" >
+            <a href="###" v-for="(leftImg,ind) in lists.left" :key="ind">
+              <img :src="leftImg">
+            </a>
+          </div>
+          <div class="home_bigGoods_right" >
+            <a href="###" v-for="(rightImg,i) in lists.right" :key="i">
+              <img :src="rightImg">
             </a>
           </div>
         </div>
@@ -234,35 +239,35 @@
       <!-- 最惨奖 -->
       <div class="home_reward">
         <a href="###">
-          <img src="./lucky.jpg">
+          <img :src="homeData[0].zuican">
         </a>
         <a href="###">
-          <img src="./experience.jpg">
+          <img :src="homeData[0].zuican_content">
         </a>
       </div>
       <!-- 特别星球 -->
       <div class="home_special_star">
         <a href="###">
-          <img src="./starball.jpg">
+          <img :src="homeData[0].special">
         </a>
       </div>
       <!-- 更多活动 -->
       <div class="home_more_sup">
         <div class="home_more_sup_item">
           <a href="###">
-            <img src="./presale.jpg" alt="">
+            <img :src="homeData[0].special_list[0]">
           </a>
         </div>
         <div class="home_more_sup_item">
           <div class="home_more_sup_inner">
             <div>
               <a href="###">
-                <img src="./video.jpg" alt="">
+                <img :src="homeData[0].special_list[1]">
               </a>
             </div>
             <div>
               <a href="###">
-                <img src="./league.jpg" alt="">
+                <img :src="homeData[0].special_list[2]">
               </a>
             </div>
           </div>
@@ -271,33 +276,16 @@
       <!-- 特色栏目 -->
       <div class="home_special_area">
         <a href="###">
-          <img src="./specialarea.jpg">
+          <img :src="homeData[0].lanmu">
         </a>
         <div>
-          <div>
+          <div v-for="(column,index) in homeData[0].lanmu_list" :key="index">
             <a href="###">
-              <img src="./einter.jpg">
-            </a>
-          </div>
-          <div>
-            <a href="###">
-              <img src="./ewater.jpg">
-            </a>
-          </div>
-          <div>
-            <a href="###">
-              <img src="./eclass.jpg">
-            </a>
-          </div>
-          <div>
-            <a href="###">
-              <img src="./clear.jpg">
+              <img :src="column">
             </a>
           </div>
         </div>
       </div>
-
-
       <!-- 主页信息 -->
       <div class="home_info">
         <div class="home_info_inner">
@@ -310,13 +298,11 @@
           <div class="home_info_legal">© wap.epet.com 版权：重庆易宠科技有限公司</div>
         </div>
       </div>
-
       <!-- 占位以显示内容盒子 -->
       <div class="emptydiv">
 
       </div>
     </div>
-
     <!-- 眨眼小狗 -->
     <div class="home_dog_img">
 
@@ -331,7 +317,8 @@
   export default {
     data(){
       return {
-        currentIndex:0
+        currentIndex:0,
+        isShowAdv:true
       }
     },
     computed:{
@@ -378,6 +365,11 @@
     methods:{
       switchBorder(index){
         this.currentIndex = index
+      },
+
+      closeAdv(){
+        this.isShowAdv = false;
+        this.$refs.paddingSet.style.paddingTop = 87+'px'
       }
     }
   }
@@ -657,20 +649,32 @@
 
         .home_bigGoods_goods
           width 100%
-          display flex
-          flex-wrap wrap
-          .home_bigGoods_item
+          overflow hidden
+          height 907px
+          >div
             width 50%
-            height 225px
+            height 907px
             box-sizing border-box
-            >a
-              display block
-              width 100%
-              height 100%
-              >img
+            &.home_bigGoods_left
+              float left
+              >a
                 display block
                 width 100%
-                height 100%
+                height 225px
+                >img
+                  display block
+                  width 100%
+                  height 100%
+            &.home_bigGoods_right
+              float right
+              >a
+                display block
+                width 100%
+                height 225px
+                >img
+                  display block
+                  width 100%
+                  height 100%
 
 
 

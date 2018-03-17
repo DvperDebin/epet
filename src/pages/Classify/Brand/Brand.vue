@@ -26,6 +26,11 @@
         </div>
       </div>
     </div>
+
+
+    <div class="all">
+      全部
+    </div>
   </div>
 </template>
 
@@ -127,4 +132,17 @@
                     overflow: hidden;
                     text-overflow: ellipsis;
                     white-space: nowrap;
+    .all
+      width 40px
+      height 40px
+      line-height 40px
+      font-size 12px
+      color #fff
+      position fixed
+      bottom 70px
+      right 10px
+      z-index 10
+      background-color #999999
+      border-radius 50%
+      text-align center
 </style>

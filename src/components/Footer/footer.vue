@@ -6,7 +6,7 @@
         </span>
       <span>首页</span>
     </div>
-    <div class="footer_item" :class="{on:$route.path === '/classify/types' || $route.path === '/classify/types'}" @click="goto('/classify')">
+    <div class="footer_item" :class="{on:$route.path === '/classify/types' || $route.path === '/classify/brand'}" @click="goto('/classify')">
         <span class="item_icon">
           <i class="iconfont icon-fenlei"></i>
         </span>
@@ -47,6 +47,7 @@
     left 0
     display flex
     background-color #fff
+    z-index 80
     .footer_item
       flex 1
       text-align center
