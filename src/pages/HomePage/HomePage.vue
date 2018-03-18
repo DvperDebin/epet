@@ -47,7 +47,7 @@
             <!-- 第一页 -->
             <div class="swiper-slide" v-for="(value,index) in homeData[0].dog_banner" :key="index">
               <a href="###">
-                <img v-lazy="value">
+                <img :src="value">
               </a>
             </div>
           </div>
