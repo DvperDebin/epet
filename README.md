@@ -60,4 +60,29 @@ READ.ME
     发现bug
       swiper 轮播图 拖拽后 自动轮播失效  --- 解决， 配置autoplay --- disableOnInteraction: false,
 
+      注意：
+          使用BScroll - 滑动到对应位置要让监视的DOM元素 使用 scrollTo 滑动到一个位置
+                        pos,y  pos.x pos中这两个属性可以监控scroll类事件当前x,y的值 类似于pageX,pageY的实时监控
+                        注意Math.abs的使用以及正负号
+5.    Day 05
+
+      目标：
+          尽可能优化网页，效果 测试
+          前台的登录注册验证 - 使用正则对输入进行验证
+
+
+      效果完成：全部品牌的左右联动，点击滑动，相应效果
+                分类页两个橡皮筋效果, 分页器样式
+
+      注意：BScroll 只对一个直接子级有效，并且父级要定高！
+
+      发现布局bug：   购物车的字体
+
+      vue-lazyload 使用 懒加载.  main.js中引入vuelazyload和图片并且Vue.use('VueLazyload',{loading:'path'/图片}})进行配置
+                                引入完成并且use后，现在就会有一个指令lazy，来代替img中的src属性 <img v-lazy="">
+      发现问题：使用swiper组件的轮播图不要使用v-lazy 会产生各种奇葩bug
+
+      使用bulletActiveClass: 'my-bullet-active' 来改变swiper中分页器的类名和样式
+
+      总结：已经尽可能完成优化，样式，效果，交互
 

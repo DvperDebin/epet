@@ -2,13 +2,17 @@
   <div class="shopCart">
     <!-- 头部 -->
     <div class="header">
-      <span class="left_icon" @click="goback">
-         <i class="iconfont icon-xiangzuo"></i>
-      </span>
-      <span class="shopCart">购物车</span>
-      <span class="right_icon" @click="switchOff">
-         <i class="iconfont icon-liebiao8"></i>
-      </span>
+      <div class="allBrand_header_left" @click="goback">
+        <span>
+           <i class="iconfont icon-xiangzuo"></i>
+        </span>
+      </div>
+      <div class="allBrand_header_mid">全部品牌</div>
+      <div class="allBrand_header_right" @click="switchOff">
+        <span>
+          <i class="iconfont icon-liebiao8"></i>
+        </span>
+      </div>
     </div>
     <!-- 分类 -->
     <transition name="move">
@@ -90,43 +94,37 @@
     height 100%
     .header
       width 100%
-      padding 0 12px
+      padding 0 10px
       box-sizing border-box
-      height 50px
-      line-height 50px
-      border-bottom 1px solid #eee
-      >span
-        height 50px
+      border-bottom 1px solid #e9e9e9
+      display flex
+      flex-wrap nowrap
+      .allBrand_header_left
+        width 10%
+        height 100%
         line-height 50px
-        display block
-        &.left_icon
-          width 20%
-          float left
-          position relative
+        text-align left
+        >span
+          >i
+            font-size 19px
+            font-weight bold
+            color #ddd
+      .allBrand_header_mid
+        width 80%
+        height 100%
+        line-height 50px
+        text-align center
+        font-size 18px
+      .allBrand_header_right
+        width 10%
+        height 100%
+        line-height 50px
+        text-align right
+        >span
           >i
             font-size 22px
             font-weight bold
-        &.right_icon
-          width 20%
-          float right
-          position absolute
-          right 0
-          top 0
-          text-align right
-          >i
-            font-size 26px
-            padding-right 5px
-            box-sizing border-box
-        &.shopCart
-          width 100%
-          float left
-          margin-left -71px
-          padding 0 71px
-          box-sizing border-box
-          text-align center
-          font-size 18px
-
-
+            color #666666
     .allBrand_selection
       width 100%
       height 68px

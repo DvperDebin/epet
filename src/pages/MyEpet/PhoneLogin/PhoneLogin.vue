@@ -87,15 +87,17 @@
         if(!isPhoneLegal){
           this.isAlertShow = true
           this.Message = '手机格式输入有误'
+          return
         }
-
         if(!/^[a-zA-Z0-9]{4}$/.test(captcha)){
           this.isAlertShow = true
           this.Message = '验证码输入有误'
+          return
         }
         if(!/^\d{6}$/.test(dynamicCode)){
           this.isAlertShow = true
           this.Message = '动态验证码有误'
+          return
         }
 
         if(isPhoneLegal){

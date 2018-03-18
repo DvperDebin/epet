@@ -3,5 +3,6 @@
 export default {
   category: [],
   brand:[],
-  homeData:[]
+  homeData:[],
+  allbrand:[]
 }

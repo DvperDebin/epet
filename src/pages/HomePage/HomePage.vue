@@ -47,7 +47,7 @@
             <!-- 第一页 -->
             <div class="swiper-slide" v-for="(value,index) in homeData[0].dog_banner" :key="index">
               <a href="###">
-                <img :src="value">
+                <img v-lazy="value">
               </a>
             </div>
           </div>
@@ -58,21 +58,21 @@
       <!-- 大banner区域 -->
       <div class="home_banner">
         <a href="###" v-if="homeData[0]">
-          <img :src="homeData[0].dog_img">
+          <img v-lazy="homeData[0].dog_img">
         </a>
       </div>
       <!-- 选项区域 -->
       <div class="home_selection" v-if="homeData[0]">
         <div class="home_selection_item" v-for="(value,index) in homeData[0].menu_list" :key="index">
           <a href="###">
-            <img :src="value">
+            <img v-lazy="value">
           </a>
         </div>
       </div>
       <!-- 今日秒杀 -->
       <div class="home_adv">
         <a href="###" v-if="homeData[0]">
-          <img :src="homeData[0].miaosha">
+          <img v-lazy="homeData[0].miaosha">
         </a>
       </div>
       <!-- 每日疯抢 -->
@@ -174,31 +174,31 @@
       <!-- 品牌力量 -->
       <div class="home_brand_power">
         <a href="###">
-          <img :src="homeData[0].brand_power">
+          <img v-lazy="homeData[0].brand_power">
         </a>
       </div>
       <!-- GIF -->
       <div class="home_gif">
-        <img :src="homeData[0].gif">
+        <img v-lazy="homeData[0].gif">
       </div>
       <!-- VIP -->
       <div class="home_VIP">
         <a href="###">
-          <img :src="homeData[0].vip">
+          <img v-lazy="homeData[0].vip">
         </a>
       </div>
       <!-- 活动 -->
       <div class="home_support">
         <div class="home_support_item" v-for="(value,index) in homeData[0].vip_services" :key="index">
           <a href="###">
-            <img :src="value">
+            <img v-lazy="value">
           </a>
         </div>
       </div>
       <!--一折 -->
       <div class="home_discount">
         <a href="###">
-          <img :src="homeData[0].dapaituan">
+          <img v-lazy="homeData[0].dapaituan">
         </a>
       </div>
       <!-- 广告轮播图 -->
@@ -220,18 +220,18 @@
       <div class="home_big_goods">
         <div class="home_bigGoods_banner">
           <a href="###">
-            <img :src="homeData[0].haohuo">
+            <img v-lazy="homeData[0].haohuo">
           </a>
         </div>
         <div class="home_bigGoods_goods" v-for="(lists,index) in homeData[0].haohuo_list" :key="index">
           <div class="home_bigGoods_left" >
             <a href="###" v-for="(leftImg,ind) in lists.left" :key="ind">
-              <img :src="leftImg">
+              <img v-lazy="leftImg">
             </a>
           </div>
           <div class="home_bigGoods_right" >
             <a href="###" v-for="(rightImg,i) in lists.right" :key="i">
-              <img :src="rightImg">
+              <img v-lazy="rightImg">
             </a>
           </div>
         </div>
@@ -239,35 +239,35 @@
       <!-- 最惨奖 -->
       <div class="home_reward">
         <a href="###">
-          <img :src="homeData[0].zuican">
+          <img v-lazy="homeData[0].zuican">
         </a>
         <a href="###">
-          <img :src="homeData[0].zuican_content">
+          <img v-lazy="homeData[0].zuican_content">
         </a>
       </div>
       <!-- 特别星球 -->
       <div class="home_special_star">
         <a href="###">
-          <img :src="homeData[0].special">
+          <img v-lazy="homeData[0].special">
         </a>
       </div>
       <!-- 更多活动 -->
       <div class="home_more_sup">
         <div class="home_more_sup_item">
           <a href="###">
-            <img :src="homeData[0].special_list[0]">
+            <img v-lazy="homeData[0].special_list[0]">
           </a>
         </div>
         <div class="home_more_sup_item">
           <div class="home_more_sup_inner">
             <div>
               <a href="###">
-                <img :src="homeData[0].special_list[1]">
+                <img v-lazy="homeData[0].special_list[1]">
               </a>
             </div>
             <div>
               <a href="###">
-                <img :src="homeData[0].special_list[2]">
+                <img v-lazy="homeData[0].special_list[2]">
               </a>
             </div>
           </div>
@@ -276,12 +276,12 @@
       <!-- 特色栏目 -->
       <div class="home_special_area">
         <a href="###">
-          <img :src="homeData[0].lanmu">
+          <img v-lazy="homeData[0].lanmu">
         </a>
         <div>
           <div v-for="(column,index) in homeData[0].lanmu_list" :key="index">
             <a href="###">
-              <img :src="column">
+              <img v-lazy="column">
             </a>
           </div>
         </div>
@@ -336,7 +336,8 @@
               disableOnInteraction: false,
             },
             pagination: {
-              el: '.swiper-pagination'
+              el: '.swiper-pagination',
+              bulletActiveClass: 'my-bullet-active',
             }
           })
 
@@ -483,6 +484,13 @@
                 >img
                   width 100%
                   height 100%
+          .swiper-pagination
+            .my-bullet-active
+              background rgba(255,255,255,1)
+              opacity 1
+              width 16px
+              height 6px
+              border-radius 3px
       .home_banner
         width 100%
         height 270.5px

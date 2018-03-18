@@ -1,4 +1,4 @@
-import {GET_BRAND,GET_CATEGORY,GET_HOMEDATA} from './mutation-types'
+import {GET_BRAND,GET_CATEGORY,GET_HOMEDATA,GET_ALLBRAND} from './mutation-types'
 
 export default {
 
@@ -15,7 +15,11 @@ export default {
   // 更新state中的homeData
   [GET_HOMEDATA](state,{homeData}){
     state.homeData = homeData
-  }
+  },
 
+  // 更新state中的allBrand
+  [GET_ALLBRAND](state,{allBrand}){
+    state.allbrand = allBrand
+  }
 
 }

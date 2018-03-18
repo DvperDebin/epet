@@ -12,7 +12,7 @@
             <li v-for="(list,index) in item.list" :key="index">
               <a href="###">
                 <div class="list_img">
-                  <img :src="list.logo">
+                  <img v-lazy="list.logo" >
                 </div>
                 <div class="rec" v-if="list.recommend">
                   <img src="./reced.png">
