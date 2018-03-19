@@ -107,3 +107,8 @@ READ.ME
     利用localstorage进行用户信息存储读取
     1. 前提：用户信息已经保存到state中
     2. 方法 在state中 第一时间发送ajax请求（这里以有一个getUserInfo的api接口为例子），得到用户信息，更新用户信息。
+    
+
+####后续
+	正在研究v-distpicker ... 目标更新城市信息
+
